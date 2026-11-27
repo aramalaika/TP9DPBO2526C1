@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Lowongan Kerja</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 30px;
+            background: #f3f4f6;
+            color: #1f2937;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
+
+        h1 {
+            color: #1e3a8a;
+            margin-top: 0;
+        }
+
+        label {
+            display: block;
+            margin-top: 18px;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 22px;
+            padding: 11px 18px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .btn:hover {
+            background: #1d4ed8;
+        }
+
+        .btn-back {
+            background: #6b7280;
+            margin-left: 7px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>{{FORM_TITLE}}</h1>
+
+        <form action="index.php" method="POST">
+            <input type="hidden" name="action" value="{{ACTION}}">
+            <input type="hidden" name="id" value="{{ID}}">
+
+            <label for="nama_lowongan">Nama Lowongan</label>
+            <input
+                type="text"
+                id="nama_lowongan"
+                name="namaLowongan"
+                value="{{NAMA_LOWONGAN}}"
+                placeholder="Contoh: Web Developer"
+                maxlength="100"
+                required
+            >
+
+            <label for="departemen">Departemen</label>
+            <input
+                type="text"
+                id="departemen"
+                name="departemen"
+                value="{{DEPARTEMEN}}"
+                placeholder="Contoh: Information Technology"
+                maxlength="100"
+                required
+            >
+
+            <label for="deskripsi">Deskripsi</label>
+            <textarea
+                id="deskripsi"
+                name="deskripsi"
+                placeholder="Tuliskan deskripsi pekerjaan..."
+            >{{DESKRIPSI}}</textarea>
+
+            <label for="status">Status Lowongan</label>
+            <select id="status" name="status" required>
+                <option value="Dibuka" {{STATUS_DIBUKA}}>Dibuka</option>
+                <option value="Ditutup" {{STATUS_DITUTUP}}>Ditutup</option>
+            </select>
+
+            <button type="submit" class="btn">Simpan</button>
+
+            <a href="index.php?screen=lowongan" class="btn btn-back">
+                Kembali
+            </a>
+        </form>
+    </div>
+</body>
+</html>
